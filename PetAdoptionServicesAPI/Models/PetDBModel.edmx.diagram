@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3f078f59fb454cf0ac93c0254de4b9ec" Name="Diagram1">
+        <EntityTypeShape EntityType="PetAdoptionDBModel.City" Width="1.5" PointX="0.75" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PetAdoptionDBModel.Country" Width="1.5" PointX="0.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="PetAdoptionDBModel.Pet" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PetAdoptionDBModel.PetActivity" Width="1.5" PointX="0.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PetAdoptionDBModel.PetImageGallery" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PetAdoptionDBModel.PetPublisher" Width="1.5" PointX="0.75" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PetAdoptionDBModel.PetSize" Width="1.5" PointX="0.75" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="PetAdoptionDBModel.PetType" Width="1.5" PointX="0.75" PointY="18.375" IsExpanded="true" />
+        <AssociationConnector Association="PetAdoptionDBModel.FK_Pet_City" ManuallyRouted="false" />
+        <AssociationConnector Association="PetAdoptionDBModel.FK_Pet_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="PetAdoptionDBModel.FK_Pet_PetActivity" ManuallyRouted="false" />
+        <AssociationConnector Association="PetAdoptionDBModel.FK_Pet_PetImageGallery" ManuallyRouted="false" />
+        <AssociationConnector Association="PetAdoptionDBModel.FK_Pet_PetPublisher" ManuallyRouted="false" />
+        <AssociationConnector Association="PetAdoptionDBModel.FK_Pet_PetSize" ManuallyRouted="false" />
+        <AssociationConnector Association="PetAdoptionDBModel.FK_Pet_PetType" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

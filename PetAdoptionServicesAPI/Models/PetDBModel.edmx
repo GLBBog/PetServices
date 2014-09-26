@@ -1,0 +1,524 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="PetAdoptionDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="City" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Country" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="IdType" Type="int" />
+          <Property Name="Age" Type="int" />
+          <Property Name="IdSize" Type="int" />
+          <Property Name="Gender" Type="varchar" MaxLength="50" />
+          <Property Name="IdActivity" Type="int" />
+          <Property Name="Breed" Type="varchar" MaxLength="50" />
+          <Property Name="Vaccinated" Type="bit" />
+          <Property Name="IdCountry" Type="int" />
+          <Property Name="IdCity" Type="int" />
+          <Property Name="Details" Type="varchar" MaxLength="255" />
+          <Property Name="PrimaryImage" Type="varchar" MaxLength="500" />
+          <Property Name="IdImageGallery" Type="bigint" />
+          <Property Name="IdPetPublisher" Type="bigint" />
+        </EntityType>
+        <EntityType Name="PetActivity">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Activity" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PetImageGallery">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Image" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="PetPublisher">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="250" />
+          <Property Name="Email" Type="varchar" MaxLength="250" />
+          <Property Name="Phone" Type="varchar" MaxLength="50" />
+          <Property Name="Phone2" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PetSize">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Size" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PetType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Pet_City">
+          <End Role="City" Type="Self.City" Multiplicity="0..1" />
+          <End Role="Pet" Type="Self.Pet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Pet">
+              <PropertyRef Name="IdCity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pet_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+          <End Role="Pet" Type="Self.Pet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Pet">
+              <PropertyRef Name="IdCountry" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pet_PetActivity">
+          <End Role="PetActivity" Type="Self.PetActivity" Multiplicity="0..1" />
+          <End Role="Pet" Type="Self.Pet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PetActivity">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Pet">
+              <PropertyRef Name="IdActivity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pet_PetImageGallery">
+          <End Role="PetImageGallery" Type="Self.PetImageGallery" Multiplicity="0..1" />
+          <End Role="Pet" Type="Self.Pet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PetImageGallery">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Pet">
+              <PropertyRef Name="IdImageGallery" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pet_PetPublisher">
+          <End Role="PetPublisher" Type="Self.PetPublisher" Multiplicity="0..1" />
+          <End Role="Pet" Type="Self.Pet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PetPublisher">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Pet">
+              <PropertyRef Name="IdPetPublisher" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pet_PetSize">
+          <End Role="PetSize" Type="Self.PetSize" Multiplicity="0..1" />
+          <End Role="Pet" Type="Self.Pet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PetSize">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Pet">
+              <PropertyRef Name="IdSize" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pet_PetType">
+          <End Role="PetType" Type="Self.PetType" Multiplicity="0..1" />
+          <End Role="Pet" Type="Self.Pet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PetType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Pet">
+              <PropertyRef Name="IdType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PetAdoptionDBModelStoreContainer">
+          <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pet" EntityType="Self.Pet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PetActivity" EntityType="Self.PetActivity" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PetImageGallery" EntityType="Self.PetImageGallery" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PetPublisher" EntityType="Self.PetPublisher" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PetSize" EntityType="Self.PetSize" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PetType" EntityType="Self.PetType" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Pet_City" Association="Self.FK_Pet_City">
+            <End Role="City" EntitySet="City" />
+            <End Role="Pet" EntitySet="Pet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pet_Country" Association="Self.FK_Pet_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Pet" EntitySet="Pet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pet_PetActivity" Association="Self.FK_Pet_PetActivity">
+            <End Role="PetActivity" EntitySet="PetActivity" />
+            <End Role="Pet" EntitySet="Pet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pet_PetImageGallery" Association="Self.FK_Pet_PetImageGallery">
+            <End Role="PetImageGallery" EntitySet="PetImageGallery" />
+            <End Role="Pet" EntitySet="Pet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pet_PetPublisher" Association="Self.FK_Pet_PetPublisher">
+            <End Role="PetPublisher" EntitySet="PetPublisher" />
+            <End Role="Pet" EntitySet="Pet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pet_PetSize" Association="Self.FK_Pet_PetSize">
+            <End Role="PetSize" EntitySet="PetSize" />
+            <End Role="Pet" EntitySet="Pet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pet_PetType" Association="Self.FK_Pet_PetType">
+            <End Role="PetType" EntitySet="PetType" />
+            <End Role="Pet" EntitySet="Pet" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PetAdoptionDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="City1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Pet" Relationship="Self.FK_Pet_City" FromRole="City" ToRole="Pet" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Country1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Pet" Relationship="Self.FK_Pet_Country" FromRole="Country" ToRole="Pet" />
+        </EntityType>
+        <EntityType Name="Pet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IdType" Type="Int32" />
+          <Property Name="Age" Type="Int32" />
+          <Property Name="IdSize" Type="Int32" />
+          <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IdActivity" Type="Int32" />
+          <Property Name="Breed" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Vaccinated" Type="Boolean" />
+          <Property Name="IdCountry" Type="Int32" />
+          <Property Name="IdCity" Type="Int32" />
+          <Property Name="Details" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="PrimaryImage" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="IdImageGallery" Type="Int64" />
+          <Property Name="IdPetPublisher" Type="Int64" />
+          <NavigationProperty Name="City" Relationship="Self.FK_Pet_City" FromRole="Pet" ToRole="City" />
+          <NavigationProperty Name="Country" Relationship="Self.FK_Pet_Country" FromRole="Pet" ToRole="Country" />
+          <NavigationProperty Name="PetActivity" Relationship="Self.FK_Pet_PetActivity" FromRole="Pet" ToRole="PetActivity" />
+          <NavigationProperty Name="PetImageGallery" Relationship="Self.FK_Pet_PetImageGallery" FromRole="Pet" ToRole="PetImageGallery" />
+          <NavigationProperty Name="PetPublisher" Relationship="Self.FK_Pet_PetPublisher" FromRole="Pet" ToRole="PetPublisher" />
+          <NavigationProperty Name="PetSize" Relationship="Self.FK_Pet_PetSize" FromRole="Pet" ToRole="PetSize" />
+          <NavigationProperty Name="PetType" Relationship="Self.FK_Pet_PetType" FromRole="Pet" ToRole="PetType" />
+        </EntityType>
+        <EntityType Name="PetActivity">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Activity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Pet" Relationship="Self.FK_Pet_PetActivity" FromRole="PetActivity" ToRole="Pet" />
+        </EntityType>
+        <EntityType Name="PetImageGallery">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Pet" Relationship="Self.FK_Pet_PetImageGallery" FromRole="PetImageGallery" ToRole="Pet" />
+        </EntityType>
+        <EntityType Name="PetPublisher">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Phone2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Pet" Relationship="Self.FK_Pet_PetPublisher" FromRole="PetPublisher" ToRole="Pet" />
+        </EntityType>
+        <EntityType Name="PetSize">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Size" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Pet" Relationship="Self.FK_Pet_PetSize" FromRole="PetSize" ToRole="Pet" />
+        </EntityType>
+        <EntityType Name="PetType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Pet" Relationship="Self.FK_Pet_PetType" FromRole="PetType" ToRole="Pet" />
+        </EntityType>
+        <Association Name="FK_Pet_City">
+          <End Role="City" Type="Self.City" Multiplicity="0..1" />
+          <End Role="Pet" Type="Self.Pet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Pet">
+              <PropertyRef Name="IdCity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pet_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+          <End Role="Pet" Type="Self.Pet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Pet">
+              <PropertyRef Name="IdCountry" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pet_PetActivity">
+          <End Role="PetActivity" Type="Self.PetActivity" Multiplicity="0..1" />
+          <End Role="Pet" Type="Self.Pet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PetActivity">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Pet">
+              <PropertyRef Name="IdActivity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pet_PetImageGallery">
+          <End Role="PetImageGallery" Type="Self.PetImageGallery" Multiplicity="0..1" />
+          <End Role="Pet" Type="Self.Pet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PetImageGallery">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Pet">
+              <PropertyRef Name="IdImageGallery" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pet_PetPublisher">
+          <End Role="PetPublisher" Type="Self.PetPublisher" Multiplicity="0..1" />
+          <End Role="Pet" Type="Self.Pet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PetPublisher">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Pet">
+              <PropertyRef Name="IdPetPublisher" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pet_PetSize">
+          <End Role="PetSize" Type="Self.PetSize" Multiplicity="0..1" />
+          <End Role="Pet" Type="Self.Pet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PetSize">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Pet">
+              <PropertyRef Name="IdSize" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pet_PetType">
+          <End Role="PetType" Type="Self.PetType" Multiplicity="0..1" />
+          <End Role="Pet" Type="Self.Pet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PetType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Pet">
+              <PropertyRef Name="IdType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PetAdoptionDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="City" EntityType="Self.City" />
+          <EntitySet Name="Country" EntityType="Self.Country" />
+          <EntitySet Name="Pet" EntityType="Self.Pet" />
+          <EntitySet Name="PetActivity" EntityType="Self.PetActivity" />
+          <EntitySet Name="PetImageGallery" EntityType="Self.PetImageGallery" />
+          <EntitySet Name="PetPublisher" EntityType="Self.PetPublisher" />
+          <EntitySet Name="PetSize" EntityType="Self.PetSize" />
+          <EntitySet Name="PetType" EntityType="Self.PetType" />
+          <AssociationSet Name="FK_Pet_City" Association="Self.FK_Pet_City">
+            <End Role="City" EntitySet="City" />
+            <End Role="Pet" EntitySet="Pet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pet_Country" Association="Self.FK_Pet_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Pet" EntitySet="Pet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pet_PetActivity" Association="Self.FK_Pet_PetActivity">
+            <End Role="PetActivity" EntitySet="PetActivity" />
+            <End Role="Pet" EntitySet="Pet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pet_PetImageGallery" Association="Self.FK_Pet_PetImageGallery">
+            <End Role="PetImageGallery" EntitySet="PetImageGallery" />
+            <End Role="Pet" EntitySet="Pet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pet_PetPublisher" Association="Self.FK_Pet_PetPublisher">
+            <End Role="PetPublisher" EntitySet="PetPublisher" />
+            <End Role="Pet" EntitySet="Pet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pet_PetSize" Association="Self.FK_Pet_PetSize">
+            <End Role="PetSize" EntitySet="PetSize" />
+            <End Role="Pet" EntitySet="Pet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pet_PetType" Association="Self.FK_Pet_PetType">
+            <End Role="PetType" EntitySet="PetType" />
+            <End Role="Pet" EntitySet="Pet" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PetAdoptionDBModelStoreContainer" CdmEntityContainer="PetAdoptionDBEntities">
+          <EntitySetMapping Name="City">
+            <EntityTypeMapping TypeName="PetAdoptionDBModel.City">
+              <MappingFragment StoreEntitySet="City">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="City1" ColumnName="City" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Country">
+            <EntityTypeMapping TypeName="PetAdoptionDBModel.Country">
+              <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Country1" ColumnName="Country" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pet">
+            <EntityTypeMapping TypeName="PetAdoptionDBModel.Pet">
+              <MappingFragment StoreEntitySet="Pet">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IdType" ColumnName="IdType" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="IdSize" ColumnName="IdSize" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="IdActivity" ColumnName="IdActivity" />
+                <ScalarProperty Name="Breed" ColumnName="Breed" />
+                <ScalarProperty Name="Vaccinated" ColumnName="Vaccinated" />
+                <ScalarProperty Name="IdCountry" ColumnName="IdCountry" />
+                <ScalarProperty Name="IdCity" ColumnName="IdCity" />
+                <ScalarProperty Name="Details" ColumnName="Details" />
+                <ScalarProperty Name="PrimaryImage" ColumnName="PrimaryImage" />
+                <ScalarProperty Name="IdImageGallery" ColumnName="IdImageGallery" />
+                <ScalarProperty Name="IdPetPublisher" ColumnName="IdPetPublisher" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PetActivity">
+            <EntityTypeMapping TypeName="PetAdoptionDBModel.PetActivity">
+              <MappingFragment StoreEntitySet="PetActivity">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Activity" ColumnName="Activity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PetImageGallery">
+            <EntityTypeMapping TypeName="PetAdoptionDBModel.PetImageGallery">
+              <MappingFragment StoreEntitySet="PetImageGallery">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PetPublisher">
+            <EntityTypeMapping TypeName="PetAdoptionDBModel.PetPublisher">
+              <MappingFragment StoreEntitySet="PetPublisher">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Phone2" ColumnName="Phone2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PetSize">
+            <EntityTypeMapping TypeName="PetAdoptionDBModel.PetSize">
+              <MappingFragment StoreEntitySet="PetSize">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PetType">
+            <EntityTypeMapping TypeName="PetAdoptionDBModel.PetType">
+              <MappingFragment StoreEntitySet="PetType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
