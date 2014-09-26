@@ -124,7 +124,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\CityController.cs" />
+    <Compile Include="Controllers\CountryController.cs" />
+    <Compile Include="Controllers\PetActivityController.cs" />
     <Compile Include="Controllers\PetController.cs" />
+    <Compile Include="Controllers\PetImageGalleryController.cs" />
+    <Compile Include="Controllers\PetPublisherController.cs" />
+    <Compile Include="Controllers\PetSizeController.cs" />
+    <Compile Include="Controllers\PetTypeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
