@@ -131,7 +131,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Properties\PublishProfiles\" />
     <Folder Include="Views\" />
   </ItemGroup>
   <ItemGroup>
@@ -275,6 +274,8 @@
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
     <Content Include="Areas\HelpPage\Views\_ViewStart.cshtml" />
     <None Include="Project_Readme.html" />
+    <None Include="Properties\PublishProfiles\petservices - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\petservices - Web Deploy.pubxml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
