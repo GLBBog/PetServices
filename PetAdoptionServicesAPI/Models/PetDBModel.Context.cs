@@ -25,13 +25,13 @@ namespace PetAdoptionServicesAPI.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<City> City { get; set; }
-        public virtual DbSet<Country> Country { get; set; }
-        public virtual DbSet<Pet> Pet { get; set; }
-        public virtual DbSet<PetActivity> PetActivity { get; set; }
-        public virtual DbSet<PetImageGallery> PetImageGallery { get; set; }
-        public virtual DbSet<PetPublisher> PetPublisher { get; set; }
-        public virtual DbSet<PetSize> PetSize { get; set; }
-        public virtual DbSet<PetType> PetType { get; set; }
+        public virtual DbSet<City> Cities { get; set; }
+        public virtual DbSet<Country> Countries { get; set; }
+        public virtual DbSet<Pet> Pets { get; set; }
+        public virtual DbSet<PetActivity> PetActivities { get; set; }
+        public virtual DbSet<PetImageGallery> PetImageGalleries { get; set; }
+        public virtual DbSet<PetPublisher> PetPublishers { get; set; }
+        public virtual DbSet<PetSize> PetSizes { get; set; }
+        public virtual DbSet<PetType> PetTypes { get; set; }
     }
 }

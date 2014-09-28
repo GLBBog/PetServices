@@ -16,12 +16,12 @@ namespace PetAdoptionServicesAPI.Models
     {
         public PetActivity()
         {
-            this.Pet = new HashSet<Pet>();
+            this.Pets = new HashSet<Pet>();
         }
     
         public int Id { get; set; }
         public string Activity { get; set; }
     
-        public virtual ICollection<Pet> Pet { get; set; }
+        public virtual ICollection<Pet> Pets { get; set; }
     }
 }

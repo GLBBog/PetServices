@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace PetAdoptionServicesAPI
 {
@@ -13,6 +14,10 @@ namespace PetAdoptionServicesAPI
             var json = config.Formatters.JsonFormatter;
             json.SerializerSettings.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.Objects;
             config.Formatters.Remove(config.Formatters.XmlFormatter);
+
+            var urlPermitidas = new EnableCorsAttribute("*", "*", "*");
+            config.EnableCors(urlPermitidas);
+
 
             // Web API routes
             config.MapHttpAttributeRoutes();

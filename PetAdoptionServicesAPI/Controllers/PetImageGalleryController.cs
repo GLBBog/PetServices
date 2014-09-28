@@ -17,16 +17,16 @@ namespace PetAdoptionServicesAPI.Controllers
         private PetAdoptionDBEntities db = new PetAdoptionDBEntities();
 
         // GET api/PetImageGallery
-        public IQueryable<PetImageGallery> GetPetImageGallery()
+        public IQueryable<PetImageGallery> GetPetImageGalleries()
         {
-            return db.PetImageGallery;
+            return db.PetImageGalleries;
         }
 
         // GET api/PetImageGallery/5
         [ResponseType(typeof(PetImageGallery))]
         public IHttpActionResult GetPetImageGallery(long id)
         {
-            PetImageGallery petimagegallery = db.PetImageGallery.Find(id);
+            PetImageGallery petimagegallery = db.PetImageGalleries.Find(id);
             if (petimagegallery == null)
             {
                 return NotFound();
@@ -78,7 +78,7 @@ namespace PetAdoptionServicesAPI.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.PetImageGallery.Add(petimagegallery);
+            db.PetImageGalleries.Add(petimagegallery);
             db.SaveChanges();
 
             return CreatedAtRoute("DefaultApi", new { id = petimagegallery.Id }, petimagegallery);
@@ -88,13 +88,13 @@ namespace PetAdoptionServicesAPI.Controllers
         [ResponseType(typeof(PetImageGallery))]
         public IHttpActionResult DeletePetImageGallery(long id)
         {
-            PetImageGallery petimagegallery = db.PetImageGallery.Find(id);
+            PetImageGallery petimagegallery = db.PetImageGalleries.Find(id);
             if (petimagegallery == null)
             {
                 return NotFound();
             }
 
-            db.PetImageGallery.Remove(petimagegallery);
+            db.PetImageGalleries.Remove(petimagegallery);
             db.SaveChanges();
 
             return Ok(petimagegallery);
@@ -111,7 +111,7 @@ namespace PetAdoptionServicesAPI.Controllers
 
         private bool PetImageGalleryExists(long id)
         {
-            return db.PetImageGallery.Count(e => e.Id == id) > 0;
+            return db.PetImageGalleries.Count(e => e.Id == id) > 0;
         }
     }
 }

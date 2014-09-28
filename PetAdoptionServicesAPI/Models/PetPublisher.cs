@@ -16,7 +16,7 @@ namespace PetAdoptionServicesAPI.Models
     {
         public PetPublisher()
         {
-            this.Pet = new HashSet<Pet>();
+            this.Pets = new HashSet<Pet>();
         }
     
         public long Id { get; set; }
@@ -25,6 +25,6 @@ namespace PetAdoptionServicesAPI.Models
         public string Phone { get; set; }
         public string Phone2 { get; set; }
     
-        public virtual ICollection<Pet> Pet { get; set; }
+        public virtual ICollection<Pet> Pets { get; set; }
     }
 }

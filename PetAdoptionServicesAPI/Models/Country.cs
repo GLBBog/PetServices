@@ -16,12 +16,12 @@ namespace PetAdoptionServicesAPI.Models
     {
         public Country()
         {
-            this.Pet = new HashSet<Pet>();
+            this.Pets = new HashSet<Pet>();
         }
     
         public int Id { get; set; }
         public string Country1 { get; set; }
     
-        public virtual ICollection<Pet> Pet { get; set; }
+        public virtual ICollection<Pet> Pets { get; set; }
     }
 }
